@@ -1,0 +1,30 @@
+= RISC-V Alternative Floating-Point Formats ("Alt-FP") Task Group --- Charter
+:doctype: article
+:encoding: utf-8
+:lang: en
+:toc: left
+:numbered:
+:stem: latexmath
+
+Contributors include Gou Yue, Nick Knight.
+
+:sectnums:
+
+== Description for Alternate FP format TG
+The Alternate FP Formats Task Group is tasked with driving the Alternate FP Formats specification and setting up alternate FP encoding framework for defining how alternate FP modes are encoded in the ISA. And the group is also responsible for standardizing alternate non-IEEE FP formats (BF16 would be supported as the highest priority) by defining arithmetic operations, including rounding mode, handling of exceptions, special values, etc. The task group will also propose additional specific-format instructions and opcodes as appropriate based on existing IEEE-FP instructions from other extensions like Zfh/F/D/V/Ediv extensions.
+
+== Preliminary charter
+1. Setting up alternate FP encoding framework for defining how alternate FP modes are encoded in the ISA.
+2. Defining RISC-V BF16 arithmetic operation, including rounding, handling of exceptions, special values, etc.
+3. Instruction design and definition. (This part has dependency on Zfh & RVV & EDIV.)
+- Defining RISC-V instructions for BFloat16 formats (computational instructions/ conversion instructions: includes developing rules for conversions between types);
+- Additional scalar widening operations.
+- Additional vector extension/ EDIV extension operations;
+4. Handling flush-to-zero for IEEE types and BF16 type.
+5. Defining a custom space for experimentation with other non-IEEE FP types.
+
+== Short-term Actions
+1. Get lightweight BF16 standards process approved.
+2. Provide a framework for BF16 formats encodings.
+3. Consider defining RISC-V instructions for BF16 formats.
+4. Further discussion and study of the need to support other alternate formats.
