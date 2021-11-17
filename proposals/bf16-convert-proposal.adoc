@@ -1,0 +1,60 @@
+:sectnums:
+
+= Bfloat16 ⇄ Float32 Conversions
+
+_Warning! This draft proposal has not been officially endorsed or accepted by RISC-V International._
+
+This document proposes instructions that convert between Bfloat16 (BF16) and IEEE 754 single-precision (FP32) values.
+
+A motivating use-case is a control processor,
+which performs these conversions in concert with an accelerator operating on the BF16 values.
+
+This document does not address BF16 arithmetic beyond these conversions.
+For example, arithmetic performed on converted BF16 values may flush subnormals,
+use odd rounding, ignore exceptions, etc.
+
+== Zfhbfmin (Scalar Conversions)
+
+The *Zfhbfmin* extension adds scalar conversions between BF16 and FP32:
+
+----
+fcvt.s.bf16  # Convert BF16 to FP32
+fcvt.bf16.s  # Convert FP32 to BF16
+----
+
+These instructions behave identically to the Zfh-extension instructions `fcvt.s.h` and `fcvt.h.s`, resp.,
+except that the narrower operands encode BF16 values instead of IEEE 754 half-precision (FP16) values.
+In particular, they obey the (static or dynamic) rounding mode,
+set floating-point exception flags, and generate special values as appropriate.
+BF16 values are stored, NaN-boxed, in F registers,
+analogously to FP16 values in the Zfh extension.
+
+The Zfhbfmin extension depends on the F extension.
+
+The Zfhbfmin extension also includes four instructions from the Zfhmin extension,
+`flh`, `fsh`, `fmv.x.h`, and `fmv.h.x`.
+These instructions copy bit patterns without interpreting them,
+so their semantics are equivalent for FP16 and BF16.
+
+== Zvfhbfmin (Vector Conversions)
+
+The *Zvfhbfmin* extension provides the vector analogues of the scalar conversions:
+
+----
+vfwcvt.f.bf16.v  # source EEW=16, dest. EEW=32
+vfncvt.bf16.f.w  # source EEW=32, dest. EEW=16
+----
+
+These instructions behave like SEW=16 analogues of the V-extension `vfwcvt.f.f.v` and `vfncvt.f.f.w` instructions, resp.,
+except that they are encoded with `vs1=01101` and `vs1=11101`, resp., and
+the narrower operands encode BF16 numbers.
+Like the scalar versions, they obey the dynamic rounding mode,
+set floating-point exception flags, and generate special values as appropriate.
+These instructions are reserved if SEW≠16.
+
+The Zvfhbfmin extension depends on the Zve32f extension.
+
+The Zvfhbfmin extension also adds SEW=16 forms of four Zve32f instructions,
+`vfmv.f.s`, `vfmv.s.f`, `vfslide1up.vf`, and `vfslide1down.vf`.
+These instructions copy bit patterns without interpreting them,
+so their semantics are equivalent for FP16 and BF16.
