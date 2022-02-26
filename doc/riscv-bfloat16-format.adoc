@@ -46,7 +46,8 @@ a trade off of precision to support _gradual underflow_.
 In RISC-V BFloat16, all subnormal BFloat16 inputs as treated as zero and subnormal outputs are flushed to zero. The sign of the original value is retained. This is not consistent with '754' but has been found to be a suitable alternative in many workloads. Furthermore, with BFloat16's relatively large exponent range, subnormals add little value.
  
 ===  Infinities:
-Infinties are used to represnt values that are too large to be represnted by the target format. These are usually produced as a result of overflows (depending on the rounding mode), but can also be provided as inputs. Infities have a sign associated with them: there are positive infionioties and negative infinities.
+Infinities are used to represent values that are too large to be represented by the target format. These are usually produced as a result of overflows (depending on the rounding mode), but can also be provided as inputs. Infinities have a sign associated with them: there are positive infinities and negative infinities.
+
 
 Infinities are important for keeping meaningless results from being operated upon.
 
