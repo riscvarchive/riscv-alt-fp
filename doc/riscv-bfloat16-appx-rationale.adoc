@@ -31,7 +31,8 @@ recommendations for the instructions in the BFloat16 extension.
 It also tries to record how the designs of instructions were
 derived, or where they were contributed from.
 
-=== Conversions Instructions
+=== Conversion Instructions
+
 
 The most common and important conversion instructions are between BFloat16 and FP32
 (Single Precision).
