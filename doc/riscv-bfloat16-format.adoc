@@ -43,7 +43,8 @@ Floating-point values that are too small to represnted as normal numbers, but ca
 more 1s --- in the trailing fractional bits are called subnormal numbers. Basically, the idea is there is
 a trade off of precision to support _gradual underflow_.
 
-In RISC-V BFloat16, all subnormal BFloat16 inputs as treated as zero and subnormal outputs are flushed to zero. The sign of the original value is retained. This is not consistent with '754' but has been found to be a suitable alternative in many workloads. Furthermore, with BFloat16's relatively large exponent range, subnormals add little value.
+In RISC-V BFloat16, all subnormal BFloat16 inputs are treated as zero and subnormal outputs are flushed to zero. The sign of the original value is retained. This is not consistent with '754' but has been found to be a suitable alternative in many workloads. Furthermore, with BFloat16's relatively large exponent range, subnormals add little value.
+
  
 ===  Infinities:
 Infinities are used to represent values that are too large to be represented by the target format. These are usually produced as a result of overflows (depending on the rounding mode), but can also be provided as inputs. Infinities have a sign associated with them: there are positive infinities and negative infinities.
