@@ -63,6 +63,7 @@ Somewhat unaptly named, yet very useful instructions.
 ====
 Significant speedup
 
-E Plurbus Unum
+E Pluribus Unum
+
 ====
 
