@@ -37,7 +37,8 @@ derived, or where they were contributed from.
 The most common and important conversion instructions are between BFloat16 and FP32
 (Single Precision).
 
-We chose not to have direct conversion between BFloa16 and other formats as they
+We chose not to have direct conversion between BFloat16 and other formats as they
+
 can typically be performed by a combination of instructions. 
 
 .Notes to software developers
