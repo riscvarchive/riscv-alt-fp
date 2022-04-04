@@ -12,7 +12,7 @@ some widespread adoption as an arithmetic format. This is in line with the Zfh
 proposed extension.
 
 While it was not the intention of '754 to have FP16 be an arithmetic format, it is
-supported by the standard. Eventhough the '754 committee recognized that FP16 was
+supported by the standard. Even though the '754 committee recognized that FP16 was
 gaining popularity, the committee decided to hold off on making it a basic format
 in the 2019 release. This means that a '754 compliant implementation of binary
 floating point, which needs to support at least one basic format, cannot support

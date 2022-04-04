@@ -2,7 +2,7 @@
 === Intended Audience
  THIS IS VERY PRELIMINARY - TO BE UPDATED
 
-FLoating-point arithmetic is a specialised subject, requiring people with many different
+Floating-point arithmetic is a specialized subject, requiring people with many different
 backgrounds to cooperate in its correct and efficient implementation.
 Where possible, we have written this specification to be understandable by
 all, though we recognize that the motivations and references to

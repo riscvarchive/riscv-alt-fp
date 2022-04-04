@@ -15,7 +15,7 @@ IEEE Compliance: While BFloat16 (BF16) is not an IEEE-754 _standard_ format, it 
 For BF16 these values are:
 
 [%autowidth]
-.BFloat16 paramenters
+.BFloat16 parameters
 |===
 |radix (b)|2
 |significand (p)|8
@@ -31,7 +31,7 @@ For BF16 these values are:
 |FP16    |1| 8| 7| 0|16| 127|-126
 |BFloat16|1| 5|10| 0|16|  15| -14
 |TF32    |1| 8|10|13|32| 127|-126
-|FP32    |1| 9|23| 0|32| 127|-126
+|FP32    |1| 8|23| 0|32| 127|-126
 |FP64    |1|11|52| 0|64|1023|-1022
 |FP128   |1|15|112|0|128|16,383|-16,382
 |===
@@ -44,7 +44,11 @@ Floating-point values that are too small to be represented as normal numbers, bu
 more 1s --- in the trailing fractional bits are called subnormal numbers. Basically, the idea is there is
 a trade off of precision to support _gradual underflow_.
 
-In RISC-V BFloat16, all subnormal BFloat16 inputs are treated as zero and subnormal outputs are flushed to zero. The sign of the original value is retained. This is not consistent with '754' but has been found to be a suitable alternative in many workloads. Furthermore, with BFloat16's relatively large exponent range, subnormals add little value.
+In RISC-V instructions operating on BFloat16, it is generally intended that all subnormal BFloat16 inputs are treated as zero and subnormal outputs are flushed to zero. The sign of the original value is retained. However, it
+is uop to the instruction to specify this behavior. 
+vary based on the instruction as there are special cases where it may be undesirable to 
+some special cases where it is not desirable to treat 
+This is not consistent with '754' but has been found to be a suitable alternative in many workloads. Furthermore, with BFloat16's relatively large exponent range, subnormals add little value.
 
  
 ===  Infinities:
@@ -55,11 +59,11 @@ Infinities are important for keeping meaningless results from being operated upo
 
 === NaNs
 
-NaN stands for Not a Number. These are provided as the result of an operation when it cannot be represnted
-as a number or infinity. For example, performaning the square root of -1 will result in a NaN because
+NaN stands for Not a Number. These are provided as the result of an operation when it cannot be represented
+as a number or infinity. For example, performing the square root of -1 will result in a NaN because
 there is no real number that can represent the result. NaNs can also be used as inputs.
 
-There are two types of NaNs: signalling and quiet. Signalling NaNs are provided as input data since no computational instruction will ever produce tis kind of a NaN. Operating on a Signalling NaN will produce an invalid operation exception. Operating on a Quiet NaN usually does not cause an exception.
+There are two types of NaNs: signalling and quiet. Signalling NaNs are provided as input data since no computational instruction will ever produce this kind of a NaN. Operating on a Signalling NaN will produce an invalid operation exception. Operating on a Quiet NaN usually does not cause an exception.
 
 NaNs include a sign bit, but the bit has no meaning.
 

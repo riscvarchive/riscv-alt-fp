@@ -11,12 +11,12 @@ from the standard
 
 ==== Round to odd
 Round to odd is not a '754 supported rounding mode. However, it avoids double
-rounding can occur when accumulating a result in a wider format and then
+rounding that can occur when accumulating a result in a wider format and then
 converting the result to a narrower format before subsequent usage.
 
 ==== Round to nearest - even
 Round to nearest, ties to even is the default '754 rounding format. It is unbiased
-and minimze rounding error.
+and minimize rounding error.
 
 === Subnormal Handling
 
@@ -38,13 +38,13 @@ The most common and important conversion instructions are between BFloat16 and F
 (Single Precision).
 
 We chose not to have direct conversion between BFloa16 and other formats as they
-can typcially be performed by a combination of instructions. 
+can typically be performed by a combination of instructions. 
 
 .Notes to software developers
 [NOTE,caption="SH"]
 ====
 In some cases, for example convert from FP64 to BFloat16 there can be double rounding.
-It is up to software to elimiante such sources of error if this is important to the
+It is up to software to eliminate such sources of error if this is important to the
 application.
 ====
 
@@ -60,7 +60,7 @@ Somewhat unaptly named, yet very useful instructions.
 .Notes to software developers
 [NOTE,caption="SH"]
 ====
-Signifiant speedup
+Significant speedup
 
 E Plurbus Unum
 ====
