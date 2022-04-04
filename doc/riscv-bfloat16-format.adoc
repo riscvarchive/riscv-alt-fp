@@ -39,16 +39,21 @@ For BF16 these values are:
 == BFloat16 behaviors
 
 === Subnormal Numbers:
-Floating-point values that are too small to be represented as normal numbers, but can still be represented by using the format's smallest exponent with a zero integer bit and one or more leading 0s --- and one or
-
+Floating-point values that are too small to be represented as normal numbers, but can still be represented by
+using the format's smallest exponent with a zero integer bit and one or more leading 0s --- and one or
 more 1s --- in the trailing fractional bits are called subnormal numbers. Basically, the idea is there is
 a trade off of precision to support _gradual underflow_.
 
-In RISC-V instructions operating on BFloat16, it is generally intended that all subnormal BFloat16 inputs are treated as zero and subnormal outputs are flushed to zero. The sign of the original value is retained. However, it
-is uop to the instruction to specify this behavior. 
-vary based on the instruction as there are special cases where it may be undesirable to 
-some special cases where it is not desirable to treat 
-This is not consistent with '754' but has been found to be a suitable alternative in many workloads. Furthermore, with BFloat16's relatively large exponent range, subnormals add little value.
+In RISC-V instructions operating on BFloat16, it is generally intended that all subnormal BFloat16 inputs
+are treated as zero and subnormal outputs are flushed to zero. The sign of the original value is retained. 
+However, it does not necessarily make sense for all BF16 instructions to follow this behavior. For
+example, there is little value in such behavior when converting between FP32 and BF16. Therefore, individual
+instructions can specify when they deviate from this behavior.
+
+While '754 doesn't support treating/flushing subnormals, many architectures have adopted such behavior
+as a reasonable simplification for certain domains.
+Furthermore, since BFloat16 has the same exponent range as FP32, supporting subnormals is  expected to
+add little value.
 
  
 ===  Infinities:
