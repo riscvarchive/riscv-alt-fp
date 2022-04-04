@@ -123,7 +123,7 @@ of the functionality.
 === `Zfbmin` - BFloat16 minimal 
 
 This extension provides the minimal support required for the BFloat16
-format. It enables BFloat16 to be an interchange format whereby it
+format. It enables BFloat16 as an interchange format whereby it
 can be used to load, store, and convert BFloat16 values. 
 <<riscv_bfloat16_zfbmin>>.
 
