@@ -28,8 +28,8 @@ For BF16 these values are:
 |===
 |Format|Sign Bits|Expo Bits|fraction bits|padded 0s|encoding bits|expo max/bias|expo min
 
-|FP16    |1| 8| 7| 0|16| 127|-126
-|BFloat16|1| 5|10| 0|16|  15| -14
+|FP16    |1| 5|10| 0|16|  15| -14
+|BFloat16|1| 8| 7| 0|16| 127|-126
 |TF32    |1| 8|10|13|32| 127|-126
 |FP32    |1| 8|23| 0|32| 127|-126
 |FP64    |1|11|52| 0|64|1023|-1022
